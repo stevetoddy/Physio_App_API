@@ -24,7 +24,7 @@ try{
         // username, password, email
         
       // Programs
-        // name, exercises [(name, image, info)], entries [(date, difficulty, pain, completion)], *ref userID*
+        // name, exercises [(name, image, info)], entries [(date, diff, pain, complete)], *ref userID*
 
 
 // User Schema
@@ -52,14 +52,15 @@ const metricSchema = new mongoose.Schema({
     complete: { type: Number, required: true }, 
     pain: { type: Number, required: true } , 
     diff: { type: Number, required: true },
-    date: { type: Date }
+    date: { type: String }
 })
 
 // Program Schema
 const programSchema = new mongoose.Schema({
     name: { type: String, required: true },
     exercises: [exerciseSchema],
-    metrics: [metricSchema]
+    metrics: [metricSchema],
+    userID: { type: String, required: true}
 })
 
 // Program Model
