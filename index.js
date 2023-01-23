@@ -2,11 +2,6 @@ import express from "express"
 import { UserModel } from "./db.js"
 
 
-const users = [
-    { username: "Steve_1000", name: "Steve", email: "s@email.com", password: "password" },
-    { username: "Oli_2000", name: "Oli", email: "o@email.com", password: "password2" },
-    { username: "Kane_3000", name: "Kane", email: "k@email.com", password: "password3" }
-]
 
 
 
