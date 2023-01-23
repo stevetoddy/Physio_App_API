@@ -1,5 +1,5 @@
 import express from "express"
-import { UserModel } from "./db.js"
+import { UserModel, ProgramModel } from "./db.js"
 
 // Declare express under 'app' and assign a port number
 const app = express()
@@ -16,6 +16,28 @@ app.get('/', (req, res) => res.status(200).send({info: `Physio App 2023`}))
 
 // Retrieve all Users
 app.get('/users', async (req, res) => res.status(200).send(await UserModel.find()))
+
+// Find All Programs 
+app.get('/programs', async (req, res) => res.status(200).send(await ProgramModel.find()))
+
+// Find All Programs Under User ID
+app.get('/program/:id', async (req, res) => res.status(200).send(await ProgramModel.find({ userID: req.params.id })))
+
+
+// Get single entry using colon for RESTful parameter 
+app.get('/programs/:id', async (req, res) => {
+    try {
+        const prog = await ProgramModel.findById(req.params.id)
+        if (prog) {
+            res.send(prog)
+        } else {
+            res.status(404).send({ error: 'Entry not found' })
+        }
+    }
+    catch (err) {
+        res.status(500).send({ error: err.message })
+    }
+})
 
 // Create an User
 app.post('/signup/', async (req, res) => {
