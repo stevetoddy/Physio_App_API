@@ -40,15 +40,34 @@ const userSchema = new mongoose.Schema({
 // User Model
 const UserModel = mongoose.model('User', userSchema)
 
+// Exercise Schema
+const exerciseSchema = new mongoose.Schema({
+    name: { type: String, required: true }, 
+    image: { type: String, required: true } , 
+    info: { type: String, required: true }
+})
+
+// Metrics Schema
+const metricSchema = new mongoose.Schema({
+    complete: { type: Number, required: true }, 
+    pain: { type: Number, required: true } , 
+    diff: { type: Number, required: true },
+    date: { type: Date }
+})
+
 // Program Schema
 const programSchema = new mongoose.Schema({
     name: { type: String, required: true },
-    exercise: { type: String, required: true },
-    metrics: { type: String, required: true },
-    userID: { type: String, required: true }
+    exercises: [exerciseSchema],
+    metrics: [metricSchema]
 })
 
 // Program Model
 const ProgramModel = mongoose.model('Program', programSchema)
 
+
+
+
 export { UserModel, ProgramModel, dbClose }
+
+

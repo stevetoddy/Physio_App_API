@@ -9,16 +9,40 @@ const seedUsers = [
     { username: "Kane_3000", email: "k@email.com", password: "password3" }
 ]
 
-
 const users = await UserModel.insertMany(seedUsers)
 console.log('Inserted Seed Users')
 
 await ProgramModel.deleteMany()
 
+const seedPrograms = [
+    {name: "Knee Strength Rebuild", 
+    exercises: [
+        {name: "Calf Raise", image: 'Link', info: "3 x 30 reps"},
+        {name: "Alternating Lunges", image: 'Link', info: "4 x 25 reps, alternating"},
+        {name: "Air Squat", image: 'Link', info: "5 x 30 reps"}
+      ], 
+    metrics: {
+        date: Date, 
+        diff: 5.6, 
+        pain: 8.3, 
+        complete: 0.67
+    }}
+
+    //   {name: "Cardio", exercises: [
+    //     {name: "Treadmill Jog", image: *link*, info: "5 minutes, 10km/h, 1.5 incline"},
+    //     {name: "Burpees", image: *link*, info: "2 x 20 reps"},
+    //     {name: "Mountain Climbers", image: *link*, info: "4 x 20 reps"}
+    //   ], entries: [
+    //     {date: "14/01/23", difficulty: 7.4, pain: 1.5, completion: 1},
+    //     {date: "17/01/23", difficulty: 6.5, pain: 1.2, completion: 1},
+    //     {date: "20/01/23", difficulty: 5.3, pain: 1, completion: 1}
+    //     ], 
+    //   userID: 2 }
+]
 
 
 
-const programs = await UserModel.insertMany(seedPrograms)
+const programs = await ProgramModel.insertMany(seedPrograms)
 console.log('Inserted Seed Programs')
 
 dbClose()
@@ -27,26 +51,25 @@ dbClose()
 
 // 8 x Programs
 
-    1s. (1)
-      {name: "Knee Strength Rebuild", exercises: [
-        {name: "Calf Raise", image: *link*, info: "3 x 30 reps"},
-        {name: "Alternating Lunges", image: *link*, info: "4 x 25 reps, alternating"},
-        {name: "Air Squat", image: *link*, info: "5 x 30 reps"}
-      ], entries: 
-        {date: "23/01/23", difficulty: 5.6, pain: 8.3, completion: 0.67},
-        userId: 1}
+    // 1s. (1)
+    //   {name: "Knee Strength Rebuild", exercises: [
+    //     {name: "Calf Raise", image: *link*, info: "3 x 30 reps"},
+    //     {name: "Alternating Lunges", image: *link*, info: "4 x 25 reps, alternating"},
+    //     {name: "Air Squat", image: *link*, info: "5 x 30 reps"}
+    //   ], entries: 
+    //     {date: "23/01/23", difficulty: 5.6, pain: 8.3, completion: 0.67},
+    //     userId: 1}
 
-    // 2k. (3)
-      // {name: "Cardio", exercises: [
-        // {name: "Treadmill Jog", image: *link*, info: "5 minutes, 10km/h, 1.5 incline"},
-        // {name: "Burpees", image: *link*, info: "2 x 20 reps"},
-        // {name: "Mountain Climbers", image: *link*, info: "4 x 20 reps"}
-      // ], entries: [
-        // {date: "14/01/23", difficulty: 7.4, pain: 1.5, completion: 1},
-        // {date: "17/01/23", difficulty: 6.5, pain: 1.2, completion: 1},
-        // {date: "20/01/23", difficulty: 5.3, pain: 1, completion: 1}
-        // ], 
-      // userID: 2 }
+    //   {name: "Cardio", exercises: [
+    //     {name: "Treadmill Jog", image: *link*, info: "5 minutes, 10km/h, 1.5 incline"},
+    //     {name: "Burpees", image: *link*, info: "2 x 20 reps"},
+    //     {name: "Mountain Climbers", image: *link*, info: "4 x 20 reps"}
+    //   ], entries: [
+    //     {date: "14/01/23", difficulty: 7.4, pain: 1.5, completion: 1},
+    //     {date: "17/01/23", difficulty: 6.5, pain: 1.2, completion: 1},
+    //     {date: "20/01/23", difficulty: 5.3, pain: 1, completion: 1}
+    //     ], 
+    //   userID: 2 }
 
     // 3k. (4)
       // {name: "Back Day", exercises: [
