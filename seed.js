@@ -52,7 +52,7 @@ const seedPrograms = [
         {name: "Planks", image: "Link", info: "4 x 45 seconds"},
         {name: "Pull-ups", image: "Link", info: "3 x 10 reps"}
     ], 
-    entries: [
+    metrics: [
         {date: "15/01/23", diff: 4.1, pain: 9.5, complete: 0.67},
         {date: "16/01/23", diff: 4.2, pain: 8, complete: 0.67},
         {date: "22/01/23", diff: 3.9, pain: 8.5, complete: 1},
@@ -67,7 +67,7 @@ const seedPrograms = [
         {name: "Push-Ups", image: "Link", info: "5 x 15 reps"},
         {name: "Dumbbell Fly", image: "Link", info: "4 x 10 reps, 10kg each hand"}
     ], 
-    entries: [
+    metrics: [
         {date: "17/01/23", diff: 7.1, pain: 2.6, complete: 1},
         {date: "19/01/23", diff: 8.2, pain: 6.5, complete: 0.67}
     ], 
@@ -80,7 +80,7 @@ const seedPrograms = [
         {name: "Wall Sit", image: "Link", info: "4 x 2 minute intervals, 30 second rest"},
         {name: "Lunges", image: "Link", info: "3 x 30 reps"}
     ], 
-    entries: [
+    metrics: [
         {date: "14/01/23", diff: 6.1, pain: 1.5, complete: 0.67},
         {date: "17/01/23", diff: 5.4, pain: 1.5, complete: 0.67},
         {date: "18/01/23", diff: 5.0, pain: 1.0, complete: 1},
@@ -96,7 +96,7 @@ const seedPrograms = [
         {name: "Wall Sit", image: "Link", info: "4 x 2 minute intervals, 30 second rest"},
         {name: "Lunges", image: "Link", info: "3 x 35 reps"}
     ], 
-    entries: [
+    metrics: [
         {date: "15/01/23", diff: 8.6, pain: 1.5, complete: 0.67},
         {date: "19/01/23", diff: 8.3, pain: 1.5, complete: 0.67},
         {date: "21/01/23", diff: 5.0, pain: 1.0, complete: 1}

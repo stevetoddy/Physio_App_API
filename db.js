@@ -3,6 +3,8 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
+mongoose.set('strictQuery', true)
+
 async function dbClose() {
     await mongoose.connection.close()
     console.log('Database disconnected')
