@@ -1,12 +1,6 @@
 import express from "express"
 import { UserModel } from "./db.js"
 
-
-
-
-
-
-
 // Declare express under 'app' and assign a port number
 const app = express()
 const port = 4001
@@ -17,17 +11,18 @@ app.use(express.json())
 // app.get/.put/.post etc is middle ware that comes with express and needs to go before 'app.listen'
 // First parameter is the path, and can take a callback function second, which takes two parameters 'request' and 'response' (req, res)
 // We can send responses using 'response.send()'.... This can be HTML, objects etc..
-app.get('/', (req, res) => res.send({info: `Physio App 2023`}))
+app.get('/', (req, res) => res.status(200).send({info: `Physio App 2023`}))
 
 
-app.get('/users', (req, res) => res.send(users))
+// Retrieve all Users
+app.get('/users', async (req, res) => res.status(200).send(await UserModel.find()))
 
-// Create an entry
+// Create an User
 app.post('/signup/', async (req, res) => {
     try {
-        const { username, name, email, password } = req.body
+        const { username, email, password } = req.body
 
-        const newUser = { username, name, email, password }
+        const newUser = { username, email, password }
 
         const insertedUser = await UserModel.create(newUser)
 
