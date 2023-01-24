@@ -11,6 +11,38 @@ describe("Seed Tests", () => {
     expect(res.body.length).toBe(4)
   })})
 
+///////   TESTING UPDATE USER, CANNOT GET DYNAMIC PARAMS WORKING WITH TEST JUST YET
+
+// describe("User Routes", () => {
+//         let id;
+//         beforeAll(async () => {
+//             app.post('/signup/', async (req, res) => {
+        
+//                 const newUser = { username: "Jane", email: "test@email.com", password: "password1" }
+        
+//                 const insertedUser = await UserModel.create(newUser)
+        
+//                 res.send(insertedUser)     
+//             }),
+//             id = newUser.body.id;
+//         });
+
+//         test('It should update the user details', async () => {
+//             const response = await request(app)
+//               .put(`/users/${id}`)
+//               .send({ username: 'John Doe' });
+//             expect(response.statusCode).toBe(200);
+//             expect(response.body).toEqual({ id, username: 'John Doe' });
+//           });
+//         });
+
+
+    // test("Update User", async () => {
+    //     const res = await request(app).put(`/users/${id}`)
+    //     expect(res.status).toBe(200) 
+    // })
+// })
+
 //   describe('Get categories list', () => {
 //     let res
 
