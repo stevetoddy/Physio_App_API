@@ -45,8 +45,8 @@ const UserModel = mongoose.model('User', userSchema)
 // Exercise Schema
 const exerciseSchema = new mongoose.Schema({
     name: { type: String, required: true }, 
-    image: { type: String, required: true } , 
-    info: { type: String, required: true }
+    image: { type: String } , 
+    info: { type: String }
 })
 
 // Metrics Schema
@@ -62,7 +62,7 @@ const programSchema = new mongoose.Schema({
     name: { type: String, required: true },
     exercises: [exerciseSchema],
     metrics: [metricSchema],
-    userID: { type: String, required: true}
+    userID: { type: String, required: true,}
 })
 
 // Program Model

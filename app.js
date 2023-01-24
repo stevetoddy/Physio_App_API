@@ -93,5 +93,81 @@ app.get('/programs/:id', async (req, res) => {
     }
 })
 
+// Create a Program
+app.post('/programs/', async (req, res) => {
+    try {
+        const { name, exercises, metrics, userID } = req.body
+
+        const newProgram = { name, exercises, metrics, userID }
+
+        const insertedProgram = await ProgramModel.create(newProgram)
+
+        res.status(201).send(insertedProgram)     
+    }
+    catch (err) {
+         res.status(500).send({ error: err.message })
+    }
+})
+
+
+// Update Exercise List (One or Many)
+app.put('/programs/exercise/:id', async (req, res) => {
+    const { exercises } = req.body
+    const updateExercise = { exercises }
+
+    try {
+        const exercises = await ProgramModel.findByIdAndUpdate(req.params.id,{ $push: updateExercise}, { returnDocument: 'after' })
+
+        if (exercises) {
+            res.send(await exercises.populate()) 
+        } else {
+            res.status(404).send({ error: 'Program could not be found' })
+        }
+    }
+    catch (err) {
+        res.status(500).send({ error: err.message })
+    }
+})
+
+
+// Replace Exercise List with new Exercises
+app.put('/programs/exercise/all/:id', async (req, res) => {
+    const { exercises } = req.body
+    const updateExercise = { exercises }
+
+    try {
+        const exercises = await ProgramModel.findByIdAndUpdate(req.params.id, updateExercise, { returnDocument: 'after' })
+
+        if (exercises) {
+            res.send(await exercises.populate()) 
+        } else {
+            res.status(404).send({ error: 'Program could not be found' })
+        }
+    }
+    catch (err) {
+        res.status(500).send({ error: err.message })
+    }
+})
+
+
+// Update Metrics List (One or Many)
+app.put('/programs/metrics/:id', async (req, res) => {
+    const { metrics } = req.body
+    const updateMetrics = { metrics }
+
+    try {
+        const metrics = await ProgramModel.findByIdAndUpdate(req.params.id,{ $push: updateMetrics}, { returnDocument: 'after' })
+
+        if (metrics) {
+            res.send(await metrics.populate()) 
+        } else {
+            res.status(404).send({ error: 'Program could not be found' })
+        }
+    }
+    catch (err) {
+        res.status(500).send({ error: err.message })
+    }
+})
+
 
 export default app
