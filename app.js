@@ -1,5 +1,6 @@
 import express from "express"
 import { UserModel, ProgramModel } from "./db.js"
+import auth from "./routes/auth.js"
 
 // Declare express under 'app' and assign a port number
 const app = express()
@@ -12,6 +13,8 @@ app.use(express.json())
 // First parameter is the path, and can take a callback function second, which takes two parameters 'request' and 'response' (req, res)
 // We can send responses using 'response.send()'.... This can be HTML, objects etc..
 app.get('/', (req, res) => res.status(200).send({info: `Physio App 2023`}))
+
+app.use("/auth", auth)
 
 // USER ROUTES
 // Retrieve all Users
