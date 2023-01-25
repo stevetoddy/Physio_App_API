@@ -1,7 +1,7 @@
 import express from 'express'
 import userRoutes from './routes/user_routes.js'
 import programRoutes from './routes/program_routes.js'
-
+import authRoutes from './routes/auth.js' 
 
 // Declare express under 'app' and assign a port number
 const app = express()
@@ -15,6 +15,7 @@ app.use(express.json())
 // Route Ends
 app.use('/users', userRoutes)
 app.use('/programs', programRoutes)
+app.use('/auth', authRoutes)
 
 
 // app.get/.put/.post etc is middle ware that comes with express and needs to go before 'app.listen'
