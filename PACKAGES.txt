@@ -1,0 +1,2 @@
+npm i 
+npm i express mongoose dotenv bcrypt express-validator jsonwebtoken
