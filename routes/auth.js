@@ -38,13 +38,7 @@ auth.post('/signup', [
   const insertedUser = await UserModel.create(newUser)
 
   // Payload
-  const token = await jwt.sign({
-    newUser
-    // Below, use an ENV reference
-  }, "nfb32iur32ibfqfvi3vf932bg932g932", {
-    expiresIn: 360000
-  })
-
+ 
   res.status(201).json({ insertedUser, token })
 
   } catch (err) {
@@ -76,31 +70,20 @@ auth.post('/login', async (req, res) => {
             error: "Invalid Password: Bcrypt Error"
         })
     }
-
-
+    
+    
+    const token = await jwt.sign({ comparedUser }, 
+        // Below, use an ENV reference
+        "nfb32iur32ibfqfvi3vf932bg932g932", 
+        { expiresIn: 360000 }
+    )
+    
+        console.log(token, comparedUser)
         res.json("Signed In!")
 
   } catch (error) {
         res.status(500).send({error: error.message})
   }
-  
-  // // Check if the password if valid
-  // if(!await bcrypt.compare(password, user.password)){
-  //   return res.status(404).json({
-  //       errors: [
-  //           {
-  //               msg: "Invalid Credentials" 
-  //           }
-  //       ]
-  //   })
-  // }
-
-  // // Send JSON WEB TOKEN
-  // const token = await jwt.sign({email}, "nfb32iur32ibfqfvi3vf932bg932g932", {expiresIn: 360000})
-
-  // res.json({
-  //     token
-  // })
 })
 
 export default auth
