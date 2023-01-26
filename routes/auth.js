@@ -17,7 +17,7 @@ auth.post('/signup', [
     }),
   check("username", "Please provide a username that is greater than 5 characters.")
     .isLength({
-      min: 6
+      min: 3
     })
 ], async (req, res) => {
   try {
@@ -38,14 +38,8 @@ auth.post('/signup', [
   const insertedUser = await UserModel.create(newUser)
 
   // Payload
-  const token = await jwt.sign({
-    newUser
-    // Below, use an ENV reference
-  }, "nfb32iur32ibfqfvi3vf932bg932g932", {
-    expiresIn: 360000
-  })
-
-  res.status(201).json({ insertedUser, token })
+ 
+  res.status(201).json(insertedUser)
 
   } catch (err) {
     res.status(500).send({ error: err.message })
@@ -53,63 +47,43 @@ auth.post('/signup', [
   
 })
 
+
+// LOGIN ROUTE
 auth.post('/login', async (req, res) => {
   try {
-  const { email, password } = req.body
-  
-  // Check if user with email exists
-  const loginUser = { email, password }
+    const { email, password } = req.body
+    
+    // Find user using email
+    const loginUserEmail = { email }
+    const comparedUser = await UserModel.find(loginUserEmail)
 
-  // Check if the password if valid
-  if(!await bcrypt.compare(password, comparedUser[0].password)){
-    return res.status(404).json({
-        errors: [
-            {
-                msg: "Bcrypt" 
-            }
-        ]
-    })
-  }
-
-  const comparedUser = await UserModel.find(loginUser)
-  console.log(comparedUser)
-
-  console.log(password)
-  console.log(comparedUser[0].password)
-
-  if(comparedUser.length === 0){
-    return res.status(422).json({
-        errors: [
-            {
-                msg: "Length",
-            }
-        ]
-    })
+    // If no user is found, send error msg
+    if(comparedUser.length === 0){
+        return res.status(422).json({
+            errors: "Invalid Details. Please check email and password are correct",
+        })
     }
 
-    res.json("sup")
+    // Check if password is valid against stored, hashed password
+    if(!await bcrypt.compare(password, comparedUser[0].password)){
+        return res.status(404).json({
+            error: "Invalid Password: Bcrypt Error"
+        })
+    }
+    
+    
+    const token = await jwt.sign({ comparedUser }, 
+        // Below, use an ENV reference
+        "nfb32iur32ibfqfvi3vf932bg932g932", 
+        { expiresIn: 360000 }
+    )
+    
+        // Temp response to get token
+        res.json({"Signed In!": token})
 
   } catch (error) {
-    res.status(500).send({error: error.message})
+        res.status(500).send({error: error.message})
   }
-  
-  // // Check if the password if valid
-  // if(!await bcrypt.compare(password, user.password)){
-  //   return res.status(404).json({
-  //       errors: [
-  //           {
-  //               msg: "Invalid Credentials" 
-  //           }
-  //       ]
-  //   })
-  // }
-
-  // // Send JSON WEB TOKEN
-  // const token = await jwt.sign({email}, "nfb32iur32ibfqfvi3vf932bg932g932", {expiresIn: 360000})
-
-  // res.json({
-  //     token
-  // })
 })
 
 export default auth

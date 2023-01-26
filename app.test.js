@@ -1,9 +1,9 @@
-import app from './app.js'
+import userRoutes from './routes/user_routes.js'
 import request from 'supertest'
 
 describe("Seed Tests", () => {
   test('Users', async () => {
-    const res = await request(app).get('/users')
+    const res = await request(userRoutes).get('/')
     expect(res.status).toBe(200)
     expect(res.body[0].username).toBe("Steve_1000")
     expect(res.headers['content-type']).toMatch(/json/i)
