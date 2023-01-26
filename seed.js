@@ -1,13 +1,22 @@
 import { UserModel, ProgramModel, dbClose } from './db.js'
+import bcrypt from 'bcrypt'
+
 
 await UserModel.deleteMany()
 
+// Creating hashed passwords for seeded user data
+const password1 = await bcrypt.hash("password1", 10)
+const password2 = await bcrypt.hash("password2", 10)
+const password3 = await bcrypt.hash("password3", 10)
+const password4 = await bcrypt.hash("password4", 10)
+
 const seedUsers = [
-    { username: "Steve_1000", email: "s@email.com", password: "password" },
-    { username: "Oli_2000", email: "o@email.com", password: "password2" },
-    { username: "TEST", email: "TEST", password: "TEST" },
-    { username: "Kane_3000", email: "k@email.com", password: "password3" }
+    { username: "Steve_1000", email: "s@email.com", password: password1 }, // Password is same as variable name
+    { username: "Oli_2000", email: "o@email.com", password: password2 },
+    { username: "TEST", email: "TEST", password: password3 },
+    { username: "Kane_3000", email: "k@email.com", password: password4 }
 ]
+
 
 const users = await UserModel.insertMany(seedUsers)
 console.log('Inserted Seed Users')

@@ -5,7 +5,7 @@ const router = Router()
 
 // USER ROUTES
 // Retrieve all Users
-router.get('/:email', async (req, res) => res.status(200).send(await UserModel.find({ email: req.params.email })))
+router.get('/', async (req, res) => res.status(200).send(await UserModel.find()))
 
 // Create an User
 router.post('/signup', async (req, res) => {
