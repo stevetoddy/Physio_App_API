@@ -2,7 +2,7 @@ import { Router } from 'express'
 import { ProgramModel } from "../db.js"
 import authenticateToken from '../controllers/auth_controller.js'
 
-const router = Router()
+export const router = Router()
 
 // PROGRAM ROUTES -  ALl need valid JWT
 // Find All Programs 
