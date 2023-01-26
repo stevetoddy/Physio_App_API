@@ -39,7 +39,7 @@ auth.post('/signup', [
 
   // Payload
  
-  res.status(201).json({ insertedUser, token })
+  res.status(201).json(insertedUser)
 
   } catch (err) {
     res.status(500).send({ error: err.message })
@@ -78,8 +78,8 @@ auth.post('/login', async (req, res) => {
         { expiresIn: 360000 }
     )
     
-        console.log(token, comparedUser)
-        res.json("Signed In!")
+        // Temp response to get token
+        res.json({"Signed In!": token})
 
   } catch (error) {
         res.status(500).send({error: error.message})
