@@ -6,7 +6,7 @@ const router = Router()
 
 // USER ROUTES - All need valid JWT
 // Retrieve all Users
-router.get('/', async (req, res) => res.send(await UserModel.find()))
+router.get('/', authenticateToken, async (req, res) => res.send(await UserModel.find()))
 
 // // Create an User
 // router.post('/signup', async (req, res) => {
