@@ -42,7 +42,8 @@ auth.post('/signup', [
   res.status(201).json(insertedUser)
 
   } catch (err) {
-    res.status(500).send({ error: err.message })
+      if (err.code === 11000) return res.status(400).json({ error: 'This username/email already exists. Please choose another.'})
+      res.status(500).send({ error: err.message })
   }
   
 })
@@ -74,7 +75,7 @@ auth.post('/login', async (req, res) => {
     
     const token = await jwt.sign({ comparedUser }, 
         // Below, use an ENV reference
-        "nfb32iur32ibfqfvi3vf932bg932g932", 
+        process.env.JWT_SECRET, 
         { expiresIn: 360000 }
     )
     

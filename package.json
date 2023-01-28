@@ -10,7 +10,8 @@
     "dev": "nodemon index.js"
   },
   "jest": {
-    "collectCoverage": true
+    "collectCoverage": true,
+    "verbose": true
   },
   "keywords": [],
   "author": "",

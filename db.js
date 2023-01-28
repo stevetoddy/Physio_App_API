@@ -71,6 +71,6 @@ const ProgramModel = mongoose.model('Program', programSchema)
 
 
 
-export { UserModel, ProgramModel, dbClose }
+export { UserModel, ProgramModel, dbClose}
 
 

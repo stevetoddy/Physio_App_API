@@ -28,5 +28,5 @@ app.get('/', (req, res) => res.status(200).send({info: `Physio App 2023`}))
 // Can add a callback function, in this case a console log showing the URL
 app.listen(port, () => console.log(`App running at http://localhost:${port}/`))
 
-export default app
+export { app, port }
 

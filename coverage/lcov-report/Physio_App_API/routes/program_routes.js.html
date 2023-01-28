@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">17.39% </span>
+                <span class="strong">58.69% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>8/46</span>
+                <span class='fraction'>27/46</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">25% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>2/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">71.42% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>5/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">18.18% </span>
+                <span class="strong">56.81% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>8/44</span>
+                <span class='fraction'>25/44</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -200,14 +200,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -237,14 +237,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -257,14 +257,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -283,14 +283,14 @@ export const router = Router()
 &nbsp;
 // PROGRAM ROUTES -  ALl need valid JWT
 // Find All Programs 
-router.get('/', authenticateToken, <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; <span class="cstat-no" title="statement not covered" >res.status(200).send(await ProgramModel.find()))</span>
+router.get('/', async (req, res) =&gt; res.status(200).send(await ProgramModel.find()))
 &nbsp;
 // Find All Programs Under User ID
-router.get('/users/:id', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; <span class="cstat-no" title="statement not covered" >res.status(200).send(await ProgramModel.find({ userID: req.params.id })))</span>
+router.get('/users/:id', async (req, res) =&gt; res.status(200).send(await ProgramModel.find({ userID: req.params.id })))
 &nbsp;
 &nbsp;
 // Get single entry using colon for RESTful parameter 
-router.get('/:id', authenticateToken, <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
+router.get('/:id', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >    try {</span>
         const prog = <span class="cstat-no" title="statement not covered" >await ProgramModel.findById(req.params.id)</span>
 <span class="cstat-no" title="statement not covered" >        if (prog) {</span>
@@ -305,15 +305,15 @@ router.get('/:id', authenticateToken, <span class="fstat-no" title="function not
 })
 &nbsp;
 // Create a Program
-router.post('/', authenticateToken, <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >    try {</span>
-        const { name, exercises, metrics, userID } = <span class="cstat-no" title="statement not covered" >req.body</span>
+router.post('/', async (req, res) =&gt; {
+    try {
+        const { name, exercises, metrics, userID } = req.body
 &nbsp;
-        const newProgram = <span class="cstat-no" title="statement not covered" >{ name, exercises, metrics, userID }</span>
+        const newProgram = { name, exercises, metrics, userID }
 &nbsp;
-        const insertedProgram = <span class="cstat-no" title="statement not covered" >await ProgramModel.create(newProgram)</span>
+        const insertedProgram = await ProgramModel.create(newProgram)
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        res.status(201).send(insertedProgram)     </span>
+        res.status(201).send(insertedProgram)     
     }
     catch (err) {
 <span class="cstat-no" title="statement not covered" >         res.status(500).send({ error: err.message })</span>
@@ -322,7 +322,7 @@ router.post('/', authenticateToken, <span class="fstat-no" title="function not c
 &nbsp;
 &nbsp;
 // Update Exercise List (One or Many)
-router.put('/exercise/:id', authenticateToken, <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
+router.put('/exercise/:id', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
     const { exercises } = <span class="cstat-no" title="statement not covered" >req.body</span>
     const updateExercise = <span class="cstat-no" title="statement not covered" >{ exercises }</span>
 &nbsp;
@@ -342,16 +342,16 @@ router.put('/exercise/:id', authenticateToken, <span class="fstat-no" title="fun
 &nbsp;
 &nbsp;
 // Replace Exercise List with new Exercises
-router.put('/exercise/all/:id', authenticateToken, <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
-    const { exercises } = <span class="cstat-no" title="statement not covered" >req.body</span>
-    const updateExercise = <span class="cstat-no" title="statement not covered" >{ exercises }</span>
+router.put('/exercise/all/:id', async (req, res) =&gt; {
+    const { exercises } = req.body
+    const updateExercise = { exercises }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    try {</span>
-        const exercises = <span class="cstat-no" title="statement not covered" >await ProgramModel.findByIdAndUpdate(req.params.id, updateExercise, { returnDocument: 'after' })</span>
+    try {
+        const exercises = await ProgramModel.findByIdAndUpdate(req.params.id, updateExercise, { returnDocument: 'after' })
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        if (exercises) {</span>
-<span class="cstat-no" title="statement not covered" >            res.send(await exercises.populate()) </span>
-        } else {
+        if (exercises) {
+            res.send(await exercises.populate()) 
+        } else <span class="missing-if-branch" title="else path not taken" >E</span>{
 <span class="cstat-no" title="statement not covered" >            res.status(404).send({ error: 'Program could not be found' })</span>
         }
     }
@@ -362,16 +362,16 @@ router.put('/exercise/all/:id', authenticateToken, <span class="fstat-no" title=
 &nbsp;
 &nbsp;
 // Update Metrics List (One or Many)
-router.put('/metrics/:id', authenticateToken, <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
-    const { metrics } = <span class="cstat-no" title="statement not covered" >req.body</span>
-    const updateMetrics = <span class="cstat-no" title="statement not covered" >{ metrics }</span>
+router.put('/metrics/:id', async (req, res) =&gt; {
+    const { metrics } = req.body
+    const updateMetrics = { metrics }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    try {</span>
-        const metrics = <span class="cstat-no" title="statement not covered" >await ProgramModel.findByIdAndUpdate(req.params.id,{ $push: updateMetrics}, { returnDocument: 'after' })</span>
+    try {
+        const metrics = await ProgramModel.findByIdAndUpdate(req.params.id,{ $push: updateMetrics}, { returnDocument: 'after' })
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        if (metrics) {</span>
-<span class="cstat-no" title="statement not covered" >            res.send(await metrics.populate()) </span>
-        } else {
+        if (metrics) {
+            res.send(await metrics.populate()) 
+        } else <span class="missing-if-branch" title="else path not taken" >E</span>{
 <span class="cstat-no" title="statement not covered" >            res.status(404).send({ error: 'Program could not be found' })</span>
         }
     }
@@ -388,7 +388,7 @@ export default router
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-01-28T07:44:02.058Z
+                at 2023-01-28T15:34:45.099Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

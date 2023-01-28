@@ -53,16 +53,17 @@ router.put('/:id', [
 // Delete User
 router.delete('/:id', async (req, res) => {
     try {
-        if(req.user.id.toString() !== req.params.id.toString()) {
-            return res.status(401).send({ "error": "Unauthorized to perform this action" })
-        }
+        // if(req.user.id.toString() !== req.params.id.toString()) {
+        //     return res.status(401).send({ "error": "Unauthorized to perform this action" })
+        // }
         const user = await UserModel.findByIdAndDelete(req.params.id)
 
-        if (user) 
-            res.status(204).send() // Reminder to check with Steve if a 404 else for this block is necessary. Difficult to access through a test.
+        if (user) {
+            res.status(204).send()
+        }
     }
     catch (err) {
-            res.status(500).send({ error: err.message })
+        res.status(404).send()
     }
 })
 
