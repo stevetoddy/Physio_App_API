@@ -7,10 +7,12 @@ const router = Router()
 
 // USER ROUTES - All need valid JWT
 // Retrieve all Users
-router.get('/', authenticateToken, async (req, res) => res.send(await UserModel.find()))
+// Add AUTH
+router.get('/', async (req, res) => res.send(await UserModel.find()))
 
 // Retrieve a specific user
-router.get('/:id', authenticateToken, async (req, res) => res.send(await UserModel.findById(req.params.id)))
+// ADD AUTH
+router.get('/:id', async (req, res) => res.send(await UserModel.findById(req.params.id)))
 
 // Update an User
 router.put('/:id', [
@@ -24,7 +26,7 @@ router.put('/:id', [
       .isLength({
         min: 3
       })
-  ], authenticateToken, async (req, res) => {
+  ], async (req, res) => {
     
     const { username, email, password } = req.body
     const errors = validationResult(req)
@@ -49,7 +51,7 @@ router.put('/:id', [
 })
 
 // Delete User
-router.delete('/:id', authenticateToken, async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         if(req.user.id.toString() !== req.params.id.toString()) {
             return res.status(401).send({ "error": "Unauthorized to perform this action" })
