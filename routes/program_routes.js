@@ -12,20 +12,17 @@ router.get('/', async (req, res) => res.status(200).send(await ProgramModel.find
 router.get('/users/:id', async (req, res) => res.status(200).send(await ProgramModel.find({ userID: req.params.id })))
 
 
-// Get single entry using colon for RESTful parameter 
+// Get single program using colon for RESTful parameter 
 router.get('/:id', async (req, res) => {
     try {
         const prog = await ProgramModel.findById(req.params.id)
-        if (prog) {
+        if (prog) 
             res.send(prog)
-        } else {
-            res.status(404).send({ error: 'Entry not found' })
+    } catch (err) {
+        res.status(404).send({ error: 'Program was not found' })
         }
-    }
-    catch (err) {
-        res.status(500).send({ error: err.message })
-    }
-})
+    })
+    
 
 // Create a Program
 router.post('/', async (req, res) => {
@@ -39,7 +36,7 @@ router.post('/', async (req, res) => {
         res.status(201).send(insertedProgram)     
     }
     catch (err) {
-         res.status(500).send({ error: err.message })
+         res.status(400).send({ error: "Please fill in the fields correctly." })
     }
 })
 
@@ -54,12 +51,10 @@ router.put('/exercise/:id', async (req, res) => {
 
         if (exercises) {
             res.send(await exercises.populate()) 
-        } else {
-            res.status(404).send({ error: 'Program could not be found' })
-        }
+        } 
     }
     catch (err) {
-        res.status(500).send({ error: err.message })
+        res.status(404).send({ error: 'Exercise could not be found' })
     }
 })
 
@@ -74,12 +69,10 @@ router.put('/exercise/all/:id', async (req, res) => {
 
         if (exercises) {
             res.send(await exercises.populate()) 
-        } else {
-            res.status(404).send({ error: 'Program could not be found' })
         }
     }
     catch (err) {
-        res.status(500).send({ error: err.message })
+        res.status(404).send({ error: 'Program could not be found' })
     }
 })
 
@@ -94,12 +87,10 @@ router.put('/metrics/:id', async (req, res) => {
 
         if (metrics) {
             res.send(await metrics.populate()) 
-        } else {
-            res.status(404).send({ error: 'Program could not be found' })
         }
     }
     catch (err) {
-        res.status(500).send({ error: err.message })
+        res.status(404).send({ error: 'Program could not be found' })
     }
 })
 

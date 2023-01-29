@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1674920085127" clover="3.2.0">
-  <project timestamp="1674920085128" name="All files">
-    <metrics statements="119" coveredstatements="91" conditionals="32" coveredconditionals="16" methods="18" coveredmethods="13" elements="169" coveredelements="120" complexity="0" loc="119" ncloc="119" packages="3" files="6" classes="6"/>
+<coverage generated="1674976824109" clover="3.2.0">
+  <project timestamp="1674976824109" name="All files">
+    <metrics statements="115" coveredstatements="106" conditionals="32" coveredconditionals="18" methods="18" coveredmethods="15" elements="165" coveredelements="139" complexity="0" loc="115" ncloc="115" packages="3" files="6" classes="6"/>
     <package name="Physio_App_API">
       <metrics statements="22" coveredstatements="21" conditionals="4" coveredconditionals="2" methods="3" coveredmethods="2"/>
       <file name="db.js" path="/home/linux-oli/projects/T3/Physio_App_API/db.js">
@@ -48,7 +48,7 @@
       </file>
     </package>
     <package name="Physio_App_API.routes">
-      <metrics statements="89" coveredstatements="70" conditionals="22" coveredconditionals="14" methods="13" coveredmethods="11"/>
+      <metrics statements="85" coveredstatements="85" conditionals="22" coveredconditionals="16" methods="13" coveredmethods="13"/>
       <file name="auth.js" path="/home/linux-oli/projects/T3/Physio_App_API/routes/auth.js">
         <metrics statements="25" coveredstatements="25" conditionals="8" coveredconditionals="8" methods="2" coveredmethods="2"/>
         <line num="7" count="1" type="stmt"/>
@@ -78,51 +78,47 @@
         <line num="86" count="1" type="stmt"/>
       </file>
       <file name="program_routes.js" path="/home/linux-oli/projects/T3/Physio_App_API/routes/program_routes.js">
-        <metrics statements="44" coveredstatements="25" conditionals="8" coveredconditionals="2" methods="7" coveredmethods="5"/>
+        <metrics statements="40" coveredstatements="40" conditionals="8" coveredconditionals="4" methods="7" coveredmethods="7"/>
         <line num="5" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
-        <line num="33" count="1" type="stmt"/>
-        <line num="35" count="1" type="stmt"/>
-        <line num="37" count="1" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="19" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="32" count="2" type="stmt"/>
+        <line num="34" count="2" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
         <line num="39" count="1" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="48" count="1" type="stmt"/>
-        <line num="49" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="53" count="0" type="stmt"/>
-        <line num="55" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="56" count="0" type="stmt"/>
-        <line num="58" count="0" type="stmt"/>
-        <line num="62" count="0" type="stmt"/>
-        <line num="68" count="1" type="stmt"/>
-        <line num="69" count="1" type="stmt"/>
-        <line num="70" count="1" type="stmt"/>
-        <line num="72" count="1" type="stmt"/>
-        <line num="73" count="1" type="stmt"/>
-        <line num="75" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="76" count="1" type="stmt"/>
-        <line num="78" count="0" type="stmt"/>
-        <line num="82" count="0" type="stmt"/>
-        <line num="88" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="46" count="2" type="stmt"/>
+        <line num="47" count="2" type="stmt"/>
+        <line num="49" count="2" type="stmt"/>
+        <line num="50" count="2" type="stmt"/>
+        <line num="52" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="63" count="1" type="stmt"/>
+        <line num="64" count="2" type="stmt"/>
+        <line num="65" count="2" type="stmt"/>
+        <line num="67" count="2" type="stmt"/>
+        <line num="68" count="2" type="stmt"/>
+        <line num="70" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="71" count="1" type="stmt"/>
+        <line num="75" count="1" type="stmt"/>
+        <line num="81" count="1" type="stmt"/>
+        <line num="82" count="2" type="stmt"/>
+        <line num="83" count="2" type="stmt"/>
+        <line num="85" count="2" type="stmt"/>
+        <line num="86" count="2" type="stmt"/>
+        <line num="88" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="89" count="1" type="stmt"/>
-        <line num="90" count="1" type="stmt"/>
-        <line num="92" count="1" type="stmt"/>
         <line num="93" count="1" type="stmt"/>
-        <line num="95" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="96" count="1" type="stmt"/>
-        <line num="98" count="0" type="stmt"/>
-        <line num="102" count="0" type="stmt"/>
       </file>
       <file name="user_routes.js" path="/home/linux-oli/projects/T3/Physio_App_API/routes/user_routes.js">
         <metrics statements="20" coveredstatements="20" conditionals="6" coveredconditionals="4" methods="4" coveredmethods="4"/>
