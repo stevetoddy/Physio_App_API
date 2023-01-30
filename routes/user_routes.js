@@ -1,18 +1,31 @@
 import { Router } from 'express'
 import { UserModel } from "../db.js"
-import authenticateToken from '../controllers/auth_controller.js'
 import { check, validationResult } from 'express-validator'
+import jwt_decode from "jwt-decode"
 
 const router = Router()
 
 // USER ROUTES - All need valid JWT
 // Retrieve all Users
-// Add AUTH
-router.get('/', async (req, res) => res.send(await UserModel.find()))
 
+router.get('/', async (req, res) => {
+  res.send(await UserModel.find())
+})
+  
 // Retrieve a specific user
-// ADD AUTH
-router.get('/:id', async (req, res) => res.send(await UserModel.findById(req.params.id)))
+router.get('/:id', async (req, res) => {
+  try {
+    // const token = req.headers.authorization
+    // const decoded = jwt_decode(token)
+    // const requesterId = decoded.comparedUser[0]._id
+    // if (req.params.id !== requesterId) {
+    //   return res.status(401).send("This ain't your profile buddy")
+    // }
+    res.status(200).send(await UserModel.findById(req.params.id))
+  } catch {
+    res.status(404).send("The user was not found")
+  }
+})
 
 // Update an User
 router.put('/:id', [
@@ -39,6 +52,13 @@ router.put('/:id', [
     const updateUser = { username, email, password }
 
     try {
+
+        // const token = req.headers.authorization
+        // const decoded = jwt_decode(token)
+        // const requesterId = decoded.comparedUser[0]._id
+        // if (req.params.id !== requesterId) {
+        //   return res.status(401).send("This ain't your profile buddy")
+        // }
         const user = await UserModel.findByIdAndUpdate(req.params.id, updateUser, { returnDocument: 'after' })
 
         if (user) {
@@ -53,13 +73,16 @@ router.put('/:id', [
 // Delete User
 router.delete('/:id', async (req, res) => {
     try {
-        // if(req.user.id.toString() !== req.params.id.toString()) {
-        //     return res.status(401).send({ "error": "Unauthorized to perform this action" })
-        // }
-        const user = await UserModel.findByIdAndDelete(req.params.id)
-
+      // const token = req.headers.authorization
+      // const decoded = jwt_decode(token)
+      // const requesterId = decoded.comparedUser[0]._id
+      // if (req.params.id !== requesterId) {
+      //   return res.status(401).send("This ain't your profile buddy")
+      // }
+      const user = await UserModel.findByIdAndDelete(req.params.id)
+      
         if (user) {
-            res.status(204).send()
+            res.status(200).send("It was deleted")
         }
     }
     catch (err) {

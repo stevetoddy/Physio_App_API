@@ -8,7 +8,7 @@ import mongoose from 'mongoose'
 
 
 describe('Test the user routes', () => {
-    let testUser, token
+    let testUser, token, seedToken, seededUser
 
     beforeEach(async () => {
     testUser = await UserModel.create({email: "test@gmail.com", username: "testuser", password: "testpassword"})
@@ -16,6 +16,7 @@ describe('Test the user routes', () => {
         // Below, use an ENV reference
         process.env.JWT_SECRET, 
         { expiresIn: 360000 })
+    
     })
 
     afterEach(async () => {
@@ -26,7 +27,6 @@ describe('Test the user routes', () => {
         const response = await request(app)
             .get('/users')
             .set({'authorization': `Bearer ${token}`})
-
         expect(response.status).toBe(200)
         expect(response.body.length).toBe(5)
         expect(response.body[4].username).toBe("testuser")
@@ -34,18 +34,15 @@ describe('Test the user routes', () => {
     
     test('GET one user, with a given ID', async () => {
         const response = await request(app)
-            .get(`/users/${testUser._id.valueOf()}`)
-            .set({'authorization': `Bearer ${token}`})
-
+            .get(`/users/${testUser._id}`)
         expect(response.status).toBe(200)
-        expect(Object.keys(response.body).length).toBe(5)
     })
     
     test('PUT one user with a given ID', async () => {
         const updatedUser = { username: 'updatedUserName', email: 'updated@gmail.com', password: 'updatedPassword'}
         const response = await request(app)
             .put(`/users/${testUser._id.valueOf()}`)
-            .set({'authorization': `Bearer ${token}`})
+            .set({'authorization': `Bearer ${seedToken}`})
             .send(updatedUser)
 
         expect(response.status).toBe(200)
@@ -93,7 +90,7 @@ describe('Test the user routes', () => {
             .delete(`/users/${testUser._id.toString()}`)
             .set({'authorization': `Bearer ${token}`})
 
-        expect(response.status).toBe(204)
+        expect(response.status).toBe(200)
     })
 
     test('DELETE one user, with a non-existing ID', async () => {

@@ -1,17 +1,26 @@
 import { Router } from 'express'
 import { ProgramModel } from "../db.js"
-import authenticateToken from '../controllers/auth_controller.js'
+
+import jwt_decode from "jwt-decode"
 
 export const router = Router()
 
-// PROGRAM ROUTES -  ALl need valid JWT
+
 // Find All Programs 
 router.get('/', async (req, res) => res.status(200).send(await ProgramModel.find()))
 
 // Find All Programs Under User ID
-router.get('/users/:id', async (req, res) => res.status(200).send(await ProgramModel.find({ userID: req.params.id })))
+router.get('/users/:id', async (req, res) => {
+    // const token = req.headers.authorization
+    // const decoded = jwt_decode(token)
+    // const requesterId = decoded.comparedUser[0]._id
+    // if (req.params.id !== requesterId) {
+    //     return res.status(401).send("This ain't your profile buddy")
+    // }
+    res.status(200).send(await ProgramModel.find({ userID: req.params.id }))
+})
 
-
+// AUTHORIZE
 // Get single program using colon for RESTful parameter 
 router.get('/:id', async (req, res) => {
     try {
@@ -25,8 +34,16 @@ router.get('/:id', async (req, res) => {
     
 
 // Create a Program
+// FIX USER ID (HINT, token)
 router.post('/', async (req, res) => {
     try {
+        // const token = req.headers.authorization
+        // const decoded = jwt_decode(token)
+        // const requesterId = decoded.comparedUser[0]._id
+        // if (req.params.id !== requesterId) {
+        //     return res.status(401).send("This ain't your profile buddy")
+        // }
+
         const { name, exercises, metrics, userID } = req.body
 
         const newProgram = { name, exercises, metrics, userID }
@@ -42,13 +59,20 @@ router.post('/', async (req, res) => {
 
 
 // Update Exercise List (One or Many)
+// AUTHORIZE
 router.put('/exercise/:id', async (req, res) => {
     const { exercises } = req.body
     const updateExercise = { exercises }
 
     try {
         const exercises = await ProgramModel.findByIdAndUpdate(req.params.id,{ $push: updateExercise}, { returnDocument: 'after' })
-
+        
+        // const token = req.headers.authorization
+        // const decoded = jwt_decode(token)
+        // const requesterId = decoded.comparedUser[0]._id
+        // if (req.params.id !== requesterId) {
+        //     return res.status(401).send("This ain't your profile buddy")
+        // }
         if (exercises) {
             res.send(await exercises.populate()) 
         } 
@@ -60,11 +84,18 @@ router.put('/exercise/:id', async (req, res) => {
 
 
 // Replace Exercise List with new Exercises
+// AUTHORIZE
 router.put('/exercise/all/:id', async (req, res) => {
     const { exercises } = req.body
     const updateExercise = { exercises }
 
     try {
+        // const token = req.headers.authorization
+        // const decoded = jwt_decode(token)
+        // const requesterId = decoded.comparedUser[0]._id
+        // if (req.params.id !== requesterId) {
+        //     return res.status(401).send("This ain't your profile buddy")
+        // }
         const exercises = await ProgramModel.findByIdAndUpdate(req.params.id, updateExercise, { returnDocument: 'after' })
 
         if (exercises) {
@@ -78,11 +109,18 @@ router.put('/exercise/all/:id', async (req, res) => {
 
 
 // Update Metrics List (One or Many)
+// AUTHORIZE
 router.put('/metrics/:id', async (req, res) => {
     const { metrics } = req.body
     const updateMetrics = { metrics }
 
     try {
+        // const token = req.headers.authorization
+        // const decoded = jwt_decode(token)
+        // const requesterId = decoded.comparedUser[0]._id
+        // if (req.params.id !== requesterId) {
+        //     return res.status(401).send("This ain't your profile buddy")
+        // }
         const metrics = await ProgramModel.findByIdAndUpdate(req.params.id,{ $push: updateMetrics}, { returnDocument: 'after' })
 
         if (metrics) {
