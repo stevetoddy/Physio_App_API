@@ -22,7 +22,7 @@ router.get('/:id', authenticateToken, async (req, res) => {
     if (req.params.id !== requesterId) {
       return res.status(401).send("This ain't your profile buddy")
     }
-    res.send(await UserModel.findById(req.params.id))
+    res.status(200).send(await UserModel.findById(req.params.id))
   } catch {
     res.status(404).send("The user was not found")
   }
