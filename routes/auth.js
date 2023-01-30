@@ -73,15 +73,15 @@ auth.post('/login', async (req, res) => {
     }
     
     
-    const token = await jwt.sign({ comparedUser }, 
-        // Below, use an ENV reference
-        process.env.JWT_SECRET, 
-        { expiresIn: 360000 }
-    )
+    // const token = await jwt.sign({ comparedUser }, 
+    //     // Below, use an ENV reference
+    //     process.env.JWT_SECRET, 
+    //     { expiresIn: 360000 }
+    // )
     
         // Temp response to get token
-        res.setHeader('authorization', `Bearer ${token}`)
-        res.json({"Signed In!": token})
+        // res.setHeader('authorization', `Bearer ${token}`)
+        res.json({"Signed In!": "Yay!"})
 
   } catch (error) {
         res.status(500).send({error: error.message})

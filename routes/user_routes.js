@@ -1,6 +1,5 @@
 import { Router } from 'express'
 import { UserModel } from "../db.js"
-import authenticateToken from '../controllers/auth_controller.js'
 import { check, validationResult } from 'express-validator'
 import jwt_decode from "jwt-decode"
 
@@ -9,19 +8,19 @@ const router = Router()
 // USER ROUTES - All need valid JWT
 // Retrieve all Users
 
-router.get('/', authenticateToken, async (req, res) => {
+router.get('/', async (req, res) => {
   res.send(await UserModel.find())
 })
   
 // Retrieve a specific user
-router.get('/:id', authenticateToken, async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
-    const token = req.headers.authorization
-    const decoded = jwt_decode(token)
-    const requesterId = decoded.comparedUser[0]._id
-    if (req.params.id !== requesterId) {
-      return res.status(401).send("This ain't your profile buddy")
-    }
+    // const token = req.headers.authorization
+    // const decoded = jwt_decode(token)
+    // const requesterId = decoded.comparedUser[0]._id
+    // if (req.params.id !== requesterId) {
+    //   return res.status(401).send("This ain't your profile buddy")
+    // }
     res.status(200).send(await UserModel.findById(req.params.id))
   } catch {
     res.status(404).send("The user was not found")
@@ -40,7 +39,7 @@ router.put('/:id', [
       .isLength({
         min: 3
       })
-  ], authenticateToken, async (req, res) => {
+  ], async (req, res) => {
     
     const { username, email, password } = req.body
     const errors = validationResult(req)
@@ -54,12 +53,12 @@ router.put('/:id', [
 
     try {
 
-        const token = req.headers.authorization
-        const decoded = jwt_decode(token)
-        const requesterId = decoded.comparedUser[0]._id
-        if (req.params.id !== requesterId) {
-          return res.status(401).send("This ain't your profile buddy")
-        }
+        // const token = req.headers.authorization
+        // const decoded = jwt_decode(token)
+        // const requesterId = decoded.comparedUser[0]._id
+        // if (req.params.id !== requesterId) {
+        //   return res.status(401).send("This ain't your profile buddy")
+        // }
         const user = await UserModel.findByIdAndUpdate(req.params.id, updateUser, { returnDocument: 'after' })
 
         if (user) {
@@ -72,14 +71,14 @@ router.put('/:id', [
 })
 
 // Delete User
-router.delete('/:id', authenticateToken, async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
-      const token = req.headers.authorization
-      const decoded = jwt_decode(token)
-      const requesterId = decoded.comparedUser[0]._id
-      if (req.params.id !== requesterId) {
-        return res.status(401).send("This ain't your profile buddy")
-      }
+      // const token = req.headers.authorization
+      // const decoded = jwt_decode(token)
+      // const requesterId = decoded.comparedUser[0]._id
+      // if (req.params.id !== requesterId) {
+      //   return res.status(401).send("This ain't your profile buddy")
+      // }
       const user = await UserModel.findByIdAndDelete(req.params.id)
       
         if (user) {

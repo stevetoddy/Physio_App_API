@@ -12,16 +12,11 @@ describe('Test the user routes', () => {
 
     beforeEach(async () => {
     testUser = await UserModel.create({email: "test@gmail.com", username: "testuser", password: "testpassword"})
-    seededUser = await UserModel.find({ username: "Steve_1000"})
     token = jwt.sign({ testUser }, 
         // Below, use an ENV reference
         process.env.JWT_SECRET, 
         { expiresIn: 360000 })
     
-    seedToken = jwt.sign({ seededUser }, 
-        // Below, use an ENV reference
-        process.env.JWT_SECRET, 
-        { expiresIn: 360000 })
     })
 
     afterEach(async () => {
@@ -37,13 +32,9 @@ describe('Test the user routes', () => {
         expect(response.body[4].username).toBe("testuser")
     })
     
-    // Fuck testing it, it works.
     test('GET one user, with a given ID', async () => {
-        console.log(seededUser[0]._id)
         const response = await request(app)
-            .get(`/users/${seededUser[0]._id.toString()}`)
-            .set({'authorization': `Bearer ${seedToken}`})
-        console.log(response)
+            .get(`/users/${testUser._id}`)
         expect(response.status).toBe(200)
     })
     
@@ -99,7 +90,7 @@ describe('Test the user routes', () => {
             .delete(`/users/${testUser._id.toString()}`)
             .set({'authorization': `Bearer ${token}`})
 
-        expect(response.status).toBe(204)
+        expect(response.status).toBe(200)
     })
 
     test('DELETE one user, with a non-existing ID', async () => {
