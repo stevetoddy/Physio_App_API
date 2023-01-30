@@ -80,6 +80,7 @@ auth.post('/login', async (req, res) => {
     )
     
         // Temp response to get token
+        res.setHeader('authorization', `Bearer ${token}`)
         res.json({"Signed In!": token})
 
   } catch (error) {
