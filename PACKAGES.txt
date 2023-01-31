@@ -1,2 +1,2 @@
 npm i 
-npm i bcrypt dotenv express express-validator mongoose jsonwebtoken
+npm i bcrypt dotenv express express-validator mongoose jsonwebtoken jwt-decode

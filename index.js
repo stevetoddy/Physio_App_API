@@ -6,10 +6,12 @@ import cors from 'cors'
 
 
 
+
 // Declare express under 'app' and assign a port number
 const app = express()
 const port = process.env.PORT || 4001
 
+app.use(cors())
 
 app.use(cors())
 
@@ -33,4 +35,6 @@ app.get('/', (req, res) => res.status(200).send({info: `Physio App 2023`}))
 // Tell express to listen for connections (default is localhost)
 // Can add a callback function, in this case a console log showing the URL
 app.listen(port, () => console.log(`App running at http://localhost:${port}/`))
+
+export { app, port }
 
