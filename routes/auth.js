@@ -75,15 +75,15 @@ auth.post('/login', async (req, res) => {
     }
     
     
-    // const token = await jwt.sign({ comparedUser }, 
-    //     // Below, use an ENV reference
-    //     process.env.JWT_SECRET, 
-    //     { expiresIn: 360000 }
-    // )
+    const token = await jwt.sign({ comparedUser }, 
+        // Below, use an ENV reference
+        process.env.JWT_SECRET, 
+        { expiresIn: 360000 }
+    )
     
         // Temp response to get token
 
-        res.json(token)
+    res.json(token)
 
 
 
