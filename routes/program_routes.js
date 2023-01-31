@@ -20,8 +20,9 @@ router.get('/users/:id', async (req, res) => {
     res.status(200).send(await ProgramModel.find({ userID: req.params.id }))
 })
 
-// AUTHORIZE
-// Get single program using colon for RESTful parameter 
+
+// Get single entry using colon for RESTful parameter 
+
 router.get('/:id', async (req, res) => {
     try {
         const prog = await ProgramModel.findById(req.params.id)
@@ -34,7 +35,9 @@ router.get('/:id', async (req, res) => {
     
 
 // Create a Program
+
 // FIX USER ID (HINT, token)
+
 router.post('/', async (req, res) => {
     try {
         // const token = req.headers.authorization

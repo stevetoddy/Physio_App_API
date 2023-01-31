@@ -8,6 +8,9 @@ const router = Router()
 // USER ROUTES - All need valid JWT
 // Retrieve all Users
 
+router.get('/', async (req, res) => res.send(await UserModel.find()))
+
+
 router.get('/', async (req, res) => {
   res.send(await UserModel.find())
 })

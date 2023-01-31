@@ -58,11 +58,13 @@ auth.post('/login', async (req, res) => {
     const loginUserEmail = { email }
     const comparedUser = await UserModel.find(loginUserEmail)
 
+    console.log(comparedUser)
     // If no user is found, send error msg
     if(comparedUser.length === 0){
         return res.status(422).json({
             errors: "Invalid Details. Please check email and password are correct",
         })
+
     }
 
     // Check if password is valid against stored, hashed password
@@ -80,8 +82,10 @@ auth.post('/login', async (req, res) => {
     // )
     
         // Temp response to get token
-        // res.setHeader('authorization', `Bearer ${token}`)
-        res.json({"Signed In!": "Yay!"})
+
+        res.json(token)
+
+
 
   } catch (error) {
         res.status(500).send({error: error.message})
