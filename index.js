@@ -2,10 +2,16 @@ import express from 'express'
 import userRoutes from './routes/user_routes.js'
 import programRoutes from './routes/program_routes.js'
 import authRoutes from './routes/auth.js' 
+import cors from 'cors'
+
+
 
 // Declare express under 'app' and assign a port number
 const app = express()
 const port = process.env.PORT || 4001
+
+
+app.use(cors())
 
 
 // Parses incoming requests with JSON headers
