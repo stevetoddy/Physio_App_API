@@ -93,5 +93,16 @@ router.delete('/:id', async (req, res) => {
     }
 })
 
+router.get('/:id/progress', async (req, res) => {
+  try {
+    const user = await UserModel.findById(req.params.id)
+    if (user) {
+      const programs = await ProgramModel.find({userID: req.params.id})
+      res.status(200).send(programs)
+    }
+  } catch (err) {
+    res.status(404).send()
+  }
+})
 
 export default router
