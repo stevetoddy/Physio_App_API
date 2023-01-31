@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { UserModel } from "../db.js"
 import { check, validationResult } from 'express-validator'
-import jwt_decode from "jwt-decode"
+// import jwt_decode from "jwt-decode"
 
 const router = Router()
 
