@@ -64,11 +64,12 @@ router.post('/', async (req, res) => {
 // Update Exercise List (One or Many)
 // AUTHORIZE
 router.put('/exercise/:id', async (req, res) => {
-    const { exercises } = req.body
-    const updateExercise = { exercises }
-
     try {
-        const exercises = await ProgramModel.findByIdAndUpdate(req.params.id,{ $push: updateExercise}, { returnDocument: 'after' })
+        const { exercises } = req.body
+        
+        const updateExercise = { exercises }
+        
+        const newExercises = await ProgramModel.findByIdAndUpdate(req.params.id,{ $push: updateExercise}, { returnDocument: 'after' })
         
         // const token = req.headers.authorization
         // const decoded = jwt_decode(token)
@@ -77,7 +78,7 @@ router.put('/exercise/:id', async (req, res) => {
         //     return res.status(401).send("This ain't your profile buddy")
         // }
         if (exercises) {
-            res.send(await exercises.populate()) 
+            res.send(await newExercises.populate()) 
         } 
     }
     catch (err) {
