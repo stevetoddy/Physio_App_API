@@ -71,12 +71,6 @@ router.put('/exercise/:id', async (req, res) => {
         
         const newExercises = await ProgramModel.findByIdAndUpdate(req.params.id,{ $push: updateExercise}, { returnDocument: 'after' })
         
-        // const token = req.headers.authorization
-        // const decoded = jwt_decode(token)
-        // const requesterId = decoded.comparedUser[0]._id
-        // if (req.params.id !== requesterId) {
-        //     return res.status(401).send("This ain't your profile buddy")
-        // }
         if (exercises) {
             res.send(await newExercises.populate()) 
         } 
@@ -115,20 +109,16 @@ router.put('/exercise/all/:id', async (req, res) => {
 // Update Metrics List (One or Many)
 // AUTHORIZE
 router.put('/metrics/:id', async (req, res) => {
-    const { metrics } = req.body
-    const updateMetrics = { metrics }
+    const newMetrics = req.body.metrics
 
     try {
-        // const token = req.headers.authorization
-        // const decoded = jwt_decode(token)
-        // const requesterId = decoded.comparedUser[0]._id
-        // if (req.params.id !== requesterId) {
-        //     return res.status(401).send("This ain't your profile buddy")
-        // }
-        const metrics = await ProgramModel.findByIdAndUpdate(req.params.id,{ $push: updateMetrics}, { returnDocument: 'after' })
+        const program = await ProgramModel.findByIdAndUpdate(req.params.id, 
+            {$push: { metrics: newMetrics}
+        }, { new: true})
 
-        if (metrics) {
-            res.send(await metrics.populate()) 
+        if (program) {
+            const updatedProgram = await program.save()
+            res.send(await updatedProgram.populate()).status(200) 
         }
     }
     catch (err) {
