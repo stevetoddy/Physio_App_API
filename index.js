@@ -9,7 +9,7 @@ import cors from 'cors'
 
 // Declare express under 'app' and assign a port number
 const app = express()
-const port = 4002
+const port = process.env.PORT || 4001
 
 app.use(cors())
 
