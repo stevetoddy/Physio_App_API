@@ -28,9 +28,9 @@ const seedPrograms = [
     {
     name: "Knee Strength Rebuild", 
     exercises: [
-        {name: "Calf Raise", image: 'Link', info: "3 x 30 reps"},
-        {name: "Alternating Lunges", image: 'Link', info: "4 x 25 reps, alternating"},
-        {name: "Air Squat", image: 'Link', info: "5 x 30 reps"}
+        {name: "Calf Raise", image: "IMAGE LINK", info: "3 x 30 reps"},
+        {name: "Alternating Lunges", image: "IMAGE LINK", info: "4 x 25 reps, alternating"},
+        {name: "Air Squat", image: "IMAGE LINK", info: "5 x 30 reps"}
       ], 
     metrics: {
         date: "21/11/22", 
@@ -43,9 +43,9 @@ const seedPrograms = [
     {
     name: "Cardio", 
     exercises: [
-        {name: "Treadmill Jog", image: 'Link', info: "5 minutes, 10km/h, 1.5 incline"},
-        {name: "Burpees", image: 'Link', info: "2 x 20 reps"},
-        {name: "Mountain Climbers", image: 'Link', info: "4 x 20 reps"}
+        {name: "Treadmill Jog", image: "IMAGE LINK", info: "5 minutes, 10km/h, 1.5 incline"},
+        {name: "Burpees", image: "IMAGE LINK", info: "2 x 20 reps"},
+        {name: "Mountain Climbers", image: "IMAGE LINK", info: "4 x 20 reps"}
     ], 
     metrics: [
         {date: "14/01/23", diff: 7.4, pain: 1.5, complete: 1},

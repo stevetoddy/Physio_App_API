@@ -13,8 +13,6 @@ const port = process.env.PORT || 4001
 
 app.use(cors())
 
-app.use(cors())
-
 
 // Parses incoming requests with JSON headers
 app.use(express.json())
